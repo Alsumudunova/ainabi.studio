@@ -1,0 +1,143 @@
+.courses-section {
+  width: 100%;
+  padding: 120px 0;
+  background: #141620;
+  color: white;
+  display: flex;
+  justify-content: center;
+}
+
+.courses-container {
+  width: 90%;
+  max-width: 1300px;
+  text-align: center;
+}
+
+.courses-title {
+  font-size: 42px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.courses-subtitle {
+  font-size: 18px;
+  opacity: 0.85;
+  max-width: 680px;
+  margin: 0 auto 50px auto;
+}
+
+/* GRID */
+.courses-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 25px;
+}
+
+/* CARD */
+.course-card {
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 18px;
+  padding: 28px;
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+
+  transition: 0.35s ease;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  animation: fadeUp 0.8s ease forwards;
+  opacity: 0;
+}
+
+/* Gradient Border */
+.course-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  padding: 2px;
+  border-radius: 18px;
+  background: linear-gradient(135deg, #6C63FF, #00C2FF);
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+
+  opacity: 0;
+  transition: 0.3s;
+}
+
+.course-card:hover::before {
+  opacity: 1;
+}
+
+.course-card:hover {
+  transform: translateY(-10px) scale(1.03);
+  box-shadow: 0 0 25px rgba(108, 99, 255, 0.4);
+  border-color: rgba(108, 99, 255, 0.6);
+}
+
+/* ICON */
+.course-icon {
+  font-size: 36px;
+  margin-bottom: 16px;
+}
+
+/* TEXT */
+.course-card h3 {
+  font-size: 22px;
+  margin-bottom: 10px;
+  color: #6C63FF;
+}
+
+.course-card p {
+  font-size: 16px;
+  opacity: 0.85;
+  line-height: 1.6;
+}
+
+/* ANIMATION */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* RESPONSIVE */
+@media (max-width: 1100px) {
+  .courses-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 650px) {
+  .courses-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .courses-title {
+    font-size: 32px;
+  }
+}
+
+
+.course-link {
+  display: inline-block;
+  margin-top: 14px;
+  color: #6C63FF;
+  text-decoration: none;
+  font-weight: 500;
+  transition: 0.3s;
+}
+
+.course-link:hover {
+  color: #00C2FF;
+}

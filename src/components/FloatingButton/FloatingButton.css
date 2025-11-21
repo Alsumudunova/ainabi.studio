@@ -1,0 +1,47 @@
+.floating-box {
+  position: fixed;
+  right: 22px;
+  bottom: 25px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  z-index: 9990;
+}
+
+/* general button */
+.floating-btn {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  color: white;
+  font-size: 22px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  text-decoration: none;
+  transition: 0.3s ease;
+  box-shadow: 0 0 15px rgba(108, 99, 255, 0.4);
+}
+
+/* WHATSAPP */
+.whatsapp-btn {
+  background: #25D366;
+}
+
+/* Phone call */
+.phone-btn {
+  background: #6C63FF;
+}
+
+/* Telegram */
+.telegram-btn {
+  background: #0088cc;
+}
+
+/* Hover effect */
+.floating-btn:hover {
+  transform: scale(1.15);
+  box-shadow: 0 0 25px rgba(108, 99, 255, 0.75);
+}

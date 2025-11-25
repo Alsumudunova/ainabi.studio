@@ -8,6 +8,12 @@ import Navbar from "../Navbar/Navbar";
 import Services from "../Services/Services";
 import Stats from "../Stats/Stats";
 import Testimonials from "../Testimonials/Testimonials";
+// @ts-ignore
+import Team from "../Team/Team";
+
+
+
+
 
 
 const Home = () => {
@@ -16,6 +22,7 @@ const Home = () => {
       <Navbar />
       <Hero />
       <About />
+      <Team />
       <Services />
       <Courses />
       <Internship/>

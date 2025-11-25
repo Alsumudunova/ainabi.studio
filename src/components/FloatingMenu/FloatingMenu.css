@@ -1,0 +1,78 @@
+.fab-container {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  z-index: 9999;
+}
+
+/* MAIN BUTTON */
+.fab-main {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #6a11cb, #2575fc);
+  color: white;
+  font-size: 26px;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 7px 20px rgba(0, 0, 0, 0.25);
+  transition: 0.3s;
+}
+
+.fab-main:hover {
+  transform: scale(1.05);
+}
+
+/* ITEMS */
+.fab-item {
+  position: absolute;
+  right: 5px;
+  bottom: 5px;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(0);
+  transition: 0.35s ease;
+}
+
+.fab-item img {
+  width: 32px;
+  height: 32px;
+}
+
+.fab-item.show {
+  opacity: 1;
+  pointer-events: all;
+}
+
+/* Position Animations */
+.fab-telegram.show {
+  transform: translateY(-65px);
+}
+.fab-whatsapp.show {
+  transform: translateY(-130px);
+}
+.fab-phone.show {
+  transform: translateY(-195px);
+}
+
+/* Background Colors */
+.fab-telegram {
+  background: #27a7e7;
+  box-shadow: 0 5px 15px rgba(39, 167, 231, 0.5);
+}
+
+.fab-whatsapp {
+  background: #25d366;
+  box-shadow: 0 5px 15px rgba(37, 211, 102, 0.5);
+}
+
+.fab-phone {
+  background: #5866ff;
+  box-shadow: 0 5px 15px rgba(88, 102, 255, 0.5);
+}

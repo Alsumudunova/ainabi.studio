@@ -3,7 +3,6 @@ import { Routes, Route } from "react-router-dom";
 
 import Home from "./components/pages/Home";
 import Loader from "./components/Loader/Loader";
-import FloatingButton from "./components/FloatingButton/FloatingButton";
 import BackToTop from "./components/BackToTop/BackToTop";
 
 // Course Details
@@ -11,6 +10,8 @@ import FlutterCourse from "./components/CourseDetails/FlutterCourse";
 import WebCourse from "./components/CourseDetails/WebCourse";
 import TargetCourse from "./components/CourseDetails/TargetCourse";
 import ChinaCourse from "./components/CourseDetails/ChinaCourse";
+import FloatingMenu from "./components/FloatingMenu/FloatingMenu";
+
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -33,8 +34,7 @@ function App() {
         <Route path="/courses/target" element={<TargetCourse />} />
         <Route path="/courses/china" element={<ChinaCourse />} />
       </Routes>
-
-      <FloatingButton />
+      <FloatingMenu/>
       <BackToTop />
     </>
   );

@@ -1,4 +1,4 @@
-/* MAIN HERO SECTION */
+
 .hero {
   width: 100%;
   min-height: 100vh;
@@ -82,37 +82,65 @@
   transform: scale(1.05);
 }
 
-/* RIGHT SHAPE */
-.hero-shape {
+/* RIGHT — IMAGE CONTAINER */
+.hero-image-container {
   flex: 1;
-  position: relative;
   display: flex;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
+  position: relative;
 }
 
-.circle {
-  width: 350px;
-  height: 350px;
+/* GLOW BEHIND IMAGE */
+.hero-image-glow {
+  position: absolute;
+  width: 360px;
+  height: 360px;
   border-radius: 50%;
-  background: radial-gradient(circle, #6C63FF, #473aff, #1c1f2e);
-  box-shadow: 0 0 120px rgba(108, 99, 255, 0.7);
+  background: radial-gradient(circle, rgba(108, 99, 255, 0.55), rgba(0,0,0,0));
+  filter: blur(45px);
+  z-index: 1;
   animation: float 4s ease-in-out infinite;
-  opacity: 0.9;
 }
 
-/* ANIMATIONS */
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(25px); }
-  to   { opacity: 1; transform: translateY(0); }
+/* IMAGE */
+.hero-image {
+  width: 360px;
+  height: 360px;
+  border-radius: 50%;
+  object-fit: cover;
+  position: relative;
+  z-index: 2;
+  box-shadow: 0 0 40px rgba(80, 80, 255, 0.35);
 }
 
+/* FOUNDER TEXT BELOW IMAGE */
+.hero-founder-text {
+  margin-top: 18px;
+  text-align: center;
+  z-index: 3;
+}
+
+.hero-founder-text h3 {
+  font-size: 28px;
+  font-weight: 600;
+}
+
+.hero-founder-text p {
+  font-size: 16px;
+  opacity: 0.8;
+  margin-top: 5px;
+}
+
+/* FLOAT ANIMATION */
 @keyframes float {
   0% { transform: translateY(0); }
   50% { transform: translateY(-18px); }
   100% { transform: translateY(0); }
 }
 
-/* RESPONSIVE */
+/* RESPONSIVE — TABLET */
 @media (max-width: 1000px) {
   .hero-container {
     flex-direction: column;
@@ -123,16 +151,17 @@
     font-size: 48px;
   }
 
-  .circle {
-    width: 270px;
-    height: 270px;
-    margin-top: 40px;
+  .hero-image,
+  .hero-image-glow {
+    width: 300px;
+    height: 300px;
   }
 }
 
+/* RESPONSIVE — MOBILE */
 @media (max-width: 600px) {
   .hero-title {
-    font-size: 38px;
+    font-size: 36px;
   }
 
   .hero-subtitle {
@@ -142,4 +171,100 @@
   .hero-buttons {
     flex-direction: column;
   }
+
+  .hero-image,
+  .hero-image-glow {
+    width: 240px;
+    height: 240px;
+  }
+
+  .hero-founder-text h3 {
+    font-size: 22px;
+  }
+
+  .hero-founder-text p {
+    font-size: 14px;
+  }
+}
+
+
+/* ОРТОДОГҮ КОНТЕЙНЕР */
+.hero-center-wrapper {
+  width: 100%;
+  height: 650px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+/* ОРТОДО АЙБЕК */
+.center-person {
+  text-align: center;
+  z-index: 10;
+}
+
+.center-photo {
+  width: 260px;
+  height: 260px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 0 80px rgba(108, 99, 255, 0.4);
+}
+
+.center-name {
+  margin-top: 15px;
+  font-size: 26px;
+  font-weight: 600;
+}
+
+.center-role {
+  margin-top: 6px;
+  opacity: 0.7;
+}
+
+/* АЙЛАНМА МЕНТОРЛОР */
+.orbit {
+  position: absolute;
+  width: 520px;
+  height: 520px;
+  animation: spin 18s linear infinite;
+}
+
+.orbit-item {
+  position: absolute;
+  text-align: center;
+  width: 110px;
+  transform: translate(-50%, -50%);
+}
+
+.orbit-item img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid white;
+}
+
+/* ТЕКСТ */
+.orbit-name {
+  margin-top: 6px;
+  font-size: 14px;
+}
+
+.orbit-role {
+  font-size: 12px;
+  opacity: 0.6;
+}
+
+/* ПОЗИЦИЯЛАР — 4 МЕНТОР */
+.item-0 { top: 0%; left: 50%; }
+.item-1 { top: 50%; left: 100%; }
+.item-2 { top: 100%; left: 50%; }
+.item-3 { top: 50%; left: 0%; }
+
+/* АЙЛАНУУ АНИМАЦИЯСЫ */
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
 }

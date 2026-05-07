@@ -48,9 +48,9 @@ const Navbar = () => {
   return (
     <nav className={scroll ? "navbar navbar-scroll" : "navbar"}>
       <div className="nav-container">
-        <div className="nav-logo">
+        <a href="#home" className="nav-logo" onClick={() => handleLinkClick("home")}>
           Ainabi<span>Studio</span>
-        </div>
+        </a>
 
         {/* Desktop menu */}
         <ul className="nav-links">
@@ -101,11 +101,16 @@ const Navbar = () => {
         </a>
 
         {/* Mobile icon */}
-        <div className="hamburger" onClick={() => setIsOpen(!isOpen)}>
+        <button
+          className="hamburger"
+          onClick={() => setIsOpen(!isOpen)}
+          aria-label={isOpen ? "Менюну жабуу" : "Менюну ачуу"}
+          aria-expanded={isOpen}
+        >
           <span className={isOpen ? "line line1-open" : "line"}></span>
           <span className={isOpen ? "line line2-open" : "line"}></span>
           <span className={isOpen ? "line line3-open" : "line"}></span>
-        </div>
+        </button>
       </div>
 
       {/* Mobile menu */}

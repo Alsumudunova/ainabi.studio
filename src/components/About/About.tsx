@@ -2,8 +2,14 @@ import "./About.css";
 import { useScrollAnimation } from "../../hooks/useScrollAnimation";
 
 const About = () => {
-  const leftAnim = useScrollAnimation();
-  const rightAnim = useScrollAnimation();
+  const [leftRef, leftVisible] = useScrollAnimation();
+  const [rightRef, rightVisible] = useScrollAnimation();
+  const cards = [
+    { title: "70% Практика", text: "Ар бир тема тапшырма, review жана мини-долбоор менен бекемделет." },
+    { title: "Стажировка", text: "Окууну бүткөндөр студиянын ички жана клиенттик долбоорлоруна кошулат." },
+    { title: "Портфолио", text: "Курстун аягында GitHub, кейс жана көрсөтө турган даяр иштер болот." },
+    { title: "Ментордук жардам", text: "Код, дизайн, жарнама жана жумуш табуу боюнча жеке багыт берилет." },
+  ];
 
   return (
     <section id="about" className="about-section">
@@ -11,27 +17,34 @@ const About = () => {
 
         {/* LEFT TEXT */}
         <div
-          ref={leftAnim.ref}
-          className={`about-text fade-left ${leftAnim.isVisible ? "show" : ""}`}
+          ref={leftRef}
+          className={`about-text fade-left ${leftVisible ? "show" : ""}`}
         >
           <h2 className="about-title">Биз жөнүндө</h2>
           <p className="about-subtext">
-            Ainabi Studio — жаңы муундагы IT студия...
+            Ainabi Studio — окуу менен реал өндүрүштү бириктирген IT студия.
+            Биз студентти жөн гана сабак угууга эмес, командада иштөөгө,
+            дедлайн кармоого жана клиентке жыйынтык берүүгө үйрөтөбүз.
           </p>
           <p className="about-subtext">
-            Студенттерге теория эмес, толук практика...
+            Web, Flutter, таргет реклама жана Кытай сайттары боюнча багыттар
+            практикалык roadmap менен жүрөт: тапшырма, текшерүү, портфолио
+            жана стажировка.
           </p>
+          <a className="about-link" href="#courses">Курстарды караңыз</a>
         </div>
 
         {/* RIGHT CARDS */}
         <div
-          ref={rightAnim.ref}
-          className={`about-cards fade-right ${rightAnim.isVisible ? "show" : ""}`}
+          ref={rightRef}
+          className={`about-cards fade-right ${rightVisible ? "show" : ""}`}
         >
-          <div className="about-card"><h3>70% Практика</h3></div>
-          <div className="about-card"><h3>Стажировка</h3></div>
-          <div className="about-card"><h3>Портфолио</h3></div>
-          <div className="about-card"><h3>Ментордук жардам</h3></div>
+          {cards.map((card) => (
+            <div className="about-card" key={card.title}>
+              <h3>{card.title}</h3>
+              <p>{card.text}</p>
+            </div>
+          ))}
         </div>
 
       </div>

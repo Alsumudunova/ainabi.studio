@@ -6,18 +6,22 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// Мында токен менен ID койосуң
-const BOT_TOKEN = "8046250058:AAFhdrSI_P4LKx2TUrW9gCRUi55n7tFfgqI";
-const CHAT_ID = "5086705602";
+const BOT_TOKEN = process.env.TELEGRAM_BOT_TOKEN || "8046250058:AAFhdrSI_P4LKx2TUrW9gCRUi55n7tFfgqI";
+const CHAT_ID = process.env.TELEGRAM_CHAT_ID || "5086705602";
 
 app.post("/send-message", async (req, res) => {
-  const { name, phone, message } = req.body;
+  const { name, phone, course, message } = req.body;
+
+  if (!name || !phone || !course) {
+    return res.status(400).json({ ok: false, error: "Missing required fields" });
+  }
 
   const text = `
-📩 Жаңы билдирүү!
+📩 Жаңы катталуу!
 👤 Аты: ${name}
-📞 Номер: ${phone}
-💬 Сообщение: ${message}
+📞 Телефон: ${phone}
+📘 Курс: ${course}
+💬 Комментарий: ${message || "Комментарий жок"}
   `;
 
   try {
@@ -33,8 +37,9 @@ app.post("/send-message", async (req, res) => {
 
     return res.json({ ok: true });
   } catch (e) {
-    return res.json({ ok: false, error: e });
+    return res.status(500).json({ ok: false, error: "Telegram message failed" });
   }
 });
 
-app.listen(5000, () => console.log("SERVER STARTED ON 5000"));
+const server = app.listen(5000, () => console.log("SERVER STARTED ON 5000"));
+server.keepAliveTimeout = 65_000;

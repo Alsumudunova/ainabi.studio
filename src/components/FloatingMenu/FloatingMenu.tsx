@@ -21,6 +21,7 @@ const FloatingMenu = () => {
         target="_blank"
         rel="noopener noreferrer"
         className={`fab-item fab-telegram ${open ? "show" : ""}`}
+        aria-label="Telegram"
       >
         <img src={telegramIcon} alt="telegram" />
       </a>
@@ -31,12 +32,13 @@ const FloatingMenu = () => {
         target="_blank"
         rel="noopener noreferrer"
         className={`fab-item fab-whatsapp ${open ? "show" : ""}`}
+        aria-label="WhatsApp"
       >
         <img src={whatsappIcon} alt="whatsapp" />
       </a>
 
       {/* Phone */}
-      <a href="tel:+996702952200" className={`fab-item fab-phone ${open ? "show" : ""}`}>
+      <a href="tel:+996702952200" className={`fab-item fab-phone ${open ? "show" : ""}`} aria-label="Телефон">
         <img src={phoneIcon} alt="phone" />
       </a>
 

@@ -2,21 +2,29 @@ import "./Hero.css";
 import logo from "../../assets/images/logo.jpeg";
 
 const Hero = () => {
+  const highlights = ["70% практика", "Реал долбоорлор", "Стажировка", "Ментордук колдоо"];
+
   return (
     <section id="home" className="hero">
+      <div className="hero-noise" aria-hidden="true"></div>
       <div className="hero-container">
-
-        {/* LEFT TEXT */}
         <div className="hero-text">
+          <p className="hero-eyebrow">IT студия жана практикалык окуу борбор</p>
           <h1 className="hero-title">
             Ainabi <span>Studio</span>
           </h1>
 
           <p className="hero-subtitle">
-            IT студия — сайт жасоо, мобилдик тиркеме иштеп чыгуу,
-            таргет реклама жана Кытай сайттары боюнча окутуу.
-            Студенттер үчүн расмий <strong>стажировка</strong> каралган.
+            Сайт, мобилдик тиркеме, таргет реклама жана Кытай маркетплейстери
+            боюнча практикалык курс. Студенттер теорияны гана окубай,
+            студиянын реал долбоорлорунда портфолио топтойт.
           </p>
+
+          <div className="hero-highlights" aria-label="Ainabi Studio артыкчылыктары">
+            {highlights.map((item) => (
+              <span key={item}>{item}</span>
+            ))}
+          </div>
 
           <div className="hero-buttons">
             <a href="#contact" className="btn-primary">Курска катталуу</a>
@@ -24,19 +32,17 @@ const Hero = () => {
           </div>
         </div>
 
-        {/* RIGHT — IMAGE + TEXT */}
         <div className="hero-image-container">
-          <div className="hero-image-glow"></div>
-
           <img src={logo} alt="Айбек" className="hero-image" />
-
-          {/* TEXT BELOW IMAGE */}
-          {/* <div className="hero-founder-text">
-            <h3>Набиев Айбек</h3>
-            <p>Негиздөөчү • Ainabi Studio</p>
-          </div> */}
+          <div className="hero-badge hero-badge-top">
+            <strong>4 багыт</strong>
+            <span>Web, Flutter, Target, China</span>
+          </div>
+          <div className="hero-badge hero-badge-bottom">
+            <strong>1:1 ментор</strong>
+            <span>Жеке текшерүү жана feedback</span>
+          </div>
         </div>
-
       </div>
     </section>
   );

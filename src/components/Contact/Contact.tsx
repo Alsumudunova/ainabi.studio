@@ -1,15 +1,13 @@
 import { useState } from "react";
 import "./Contact.css";
 
-const BOT_TOKEN = "8046250058:AAFhdrSI_P4LKx2TUrW9gCRUi55n7tFfgqI";
-const CHAT_ID = "5086705602";
-
 const Contact = () => {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [course, setCourse] = useState("");
   const [message, setMessage] = useState("");
   const [status, setStatus] = useState("");
+  const [sending, setSending] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -19,31 +17,30 @@ const Contact = () => {
       return;
     }
 
-    const text = `
-📩 Жаңы катталуу!
-👤 Аты: ${name}
-📞 Телефон: ${phone}
-📘 Курс: ${course}
-💬 Комментарий: ${message || "Комментарий жок"}
-`;
-
+    setSending(true);
     try {
-      await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
+      const response = await fetch("/send-message", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          chat_id: CHAT_ID,
-          text: text,
+          name,
+          phone,
+          course,
+          message,
         }),
       });
+
+      if (!response.ok) throw new Error("Message was not sent");
 
       setStatus("success");
       setName("");
       setPhone("");
       setCourse("");
       setMessage("");
-    } catch (error) {
+    } catch {
       setStatus("error");
+    } finally {
+      setSending(false);
     }
   };
 
@@ -56,50 +53,63 @@ const Contact = () => {
           Төмөнкү форманы толтуруп жөнөтүңүз — сиз менен байланышабыз.
         </p>
 
-        <form className="contact-form" onSubmit={handleSubmit}>
-          <input
-            type="text"
-            placeholder="Атыңыз"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-          />
+        <div className="contact-layout">
+          <div className="contact-info">
+            <span className="contact-kicker">Байланыш</span>
+            <h3>Сурооңуз болсо, команда тез жооп берет</h3>
+            <p>Форма аркылуу заявка калтырыңыз же түз WhatsApp/Telegram аркылуу жазыңыз.</p>
+            <a href="tel:+996702952200">+996 702 952 200</a>
+            <a href="https://wa.me/996702952200" target="_blank" rel="noopener noreferrer">WhatsApp аркылуу жазуу</a>
+            <a href="https://t.me/aibek_dev" target="_blank" rel="noopener noreferrer">Telegram аркылуу жазуу</a>
+          </div>
 
-          <input
-            type="text"
-            placeholder="Телефон"
-            value={phone}
-            onChange={(e) => setPhone(e.target.value)}
-          />
+          <form className="contact-form" onSubmit={handleSubmit}>
+            <input
+              type="text"
+              placeholder="Атыңыз"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              autoComplete="name"
+            />
 
-          <select
-            value={course}
-            onChange={(e) => setCourse(e.target.value)}
-          >
-            <option value="">Кайсы курс?</option>
-            <option value="Flutter">Flutter</option>
-            <option value="Web">Web Сайт Жасоо</option>
-            <option value="Target">Таргет Реклама</option>
-            <option value="China">Кытай Сайттары</option>
-          </select>
+            <input
+              type="tel"
+              placeholder="Телефон"
+              value={phone}
+              onChange={(e) => setPhone(e.target.value)}
+              autoComplete="tel"
+            />
 
-          <textarea
-            placeholder="Комментарий (милдеттүү эмес)"
-            value={message}
-            onChange={(e) => setMessage(e.target.value)}
-          />
+            <select
+              value={course}
+              onChange={(e) => setCourse(e.target.value)}
+            >
+              <option value="">Кайсы курс?</option>
+              <option value="Flutter">Flutter</option>
+              <option value="Web">Web Сайт Жасоо</option>
+              <option value="Target">Таргет Реклама</option>
+              <option value="China">Кытай Сайттары</option>
+            </select>
 
-          <button type="submit" className="send-btn">
-            Жөнөтүү
-          </button>
+            <textarea
+              placeholder="Комментарий (милдеттүү эмес)"
+              value={message}
+              onChange={(e) => setMessage(e.target.value)}
+            />
 
-          {status === "success" && (
-            <p className="success-msg">✔ Катталуу ийгиликтүү жөнөтүлдү!</p>
-          )}
+            <button type="submit" className="send-btn" disabled={sending}>
+              {sending ? "Жөнөтүлүүдө..." : "Жөнөтүү"}
+            </button>
 
-          {status === "error" && (
-            <p className="error-msg">✖ Талааларды толтуруңуз!</p>
-          )}
-        </form>
+            {status === "success" && (
+              <p className="success-msg">Катталуу ийгиликтүү жөнөтүлдү!</p>
+            )}
+
+            {status === "error" && (
+              <p className="error-msg">Талааларды текшерип, кайра жөнөтүңүз.</p>
+            )}
+          </form>
+        </div>
 
       </div>
     </section>

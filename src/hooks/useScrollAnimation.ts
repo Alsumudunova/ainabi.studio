@@ -22,5 +22,5 @@ export const useScrollAnimation = () => {
     return () => observer.disconnect();
   }, []);
 
-  return { ref, isVisible };
+  return [ref, isVisible] as const;
 };

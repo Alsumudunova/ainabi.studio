@@ -1,15 +1,15 @@
 .testimonials-section {
   width: 100%;
-  padding: 120px 0;
-  background: #141620;
+  padding: 110px 0;
+  background: #141827;
   color: white;
   text-align: center;
 }
 
 .testimonials-title {
-  font-size: 42px;
+  font-size: clamp(34px, 4vw, 52px);
   margin-bottom: 50px;
-  font-weight: 700;
+  font-weight: 800;
 }
 
 /* Slider Container */
@@ -17,60 +17,60 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 25px;
+  gap: 18px;
   position: relative;
+  width: var(--container);
+  margin: auto;
 }
 
 /* Arrows */
 .arrow {
-  background: rgba(255, 255, 255, 0.08);
+  background: var(--panel);
   color: white;
-  border: none;
-  font-size: 36px;
+  border: 1px solid var(--line);
+  font-size: 34px;
   width: 50px;
   height: 50px;
   border-radius: 50%;
-
   cursor: pointer;
   transition: 0.3s ease;
+  flex: 0 0 auto;
 }
 
 .arrow:hover {
-  background: rgba(255, 255, 255, 0.18);
-  transform: scale(1.1);
+  border-color: rgba(32, 214, 199, 0.52);
+  transform: translateY(-3px);
 }
 
 /* Testimonial Card */
 .testimonial-card {
-  width: 70%;
+  width: 100%;
   max-width: 650px;
   padding: 35px;
-
-  background: rgba(255, 255, 255, 0.04);
-  border-radius: 16px;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  backdrop-filter: blur(15px);
-
-  box-shadow: 0 0 25px rgba(108, 99, 255, 0.25);
+  background: var(--panel);
+  border-radius: 14px;
+  border: 1px solid var(--line);
+  backdrop-filter: blur(18px);
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.22);
   transition: 0.4s ease;
 }
 
 .text {
   font-size: 20px;
   line-height: 1.6;
-  opacity: 0.9;
+  color: rgba(255, 255, 255, 0.9);
   margin-bottom: 20px;
 }
 
 .name {
   font-size: 22px;
-  color: #6C63FF;
+  color: var(--accent-2);
   font-weight: 600;
 }
 
 .role {
   font-size: 16px;
-  opacity: 0.7;
+  color: var(--muted);
 }
 
 /* Fade Animation */
@@ -85,9 +85,18 @@
 
 /* Responsive */
 @media (max-width: 700px) {
+  .testimonials-section {
+    padding: 82px 0;
+  }
+
+  .slider {
+    display: grid;
+    grid-template-columns: 44px 1fr 44px;
+    gap: 10px;
+  }
+
   .testimonial-card {
-    width: 90%;
-    padding: 25px;
+    padding: 22px;
   }
 
   .arrow {

@@ -1,52 +1,48 @@
 .stats-section {
   width: 100%;
-  padding: 120px 0;
-  background: #0f1120;
+  padding: 76px 0;
+  background: #0d101c;
   color: white;
   display: flex;
   justify-content: center;
 }
 
 .stats-container {
-  width: 90%;
-  max-width: 1300px;
-
+  width: var(--container);
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 25px;
-
+  gap: 18px;
   text-align: center;
 }
 
 /* CARD */
 .stat-card {
-  background: rgba(255, 255, 255, 0.05);
-  border-radius: 16px;
-  padding: 35px 20px;
-  backdrop-filter: blur(14px);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-
-  box-shadow: 0 0 30px rgba(108, 99, 255, 0.25);
+  background: var(--panel);
+  border-radius: 12px;
+  padding: 32px 20px;
+  backdrop-filter: blur(18px);
+  border: 1px solid var(--line);
   transition: 0.35s;
 }
 
 .stat-card:hover {
   transform: translateY(-8px);
-  box-shadow: 0 0 35px rgba(108, 99, 255, 0.45);
+  box-shadow: 0 24px 54px rgba(0, 0, 0, 0.26);
+  border-color: rgba(32, 214, 199, 0.46);
 }
 
 /* Numbers */
 .stat-number {
-  font-size: 48px;
-  font-weight: 700;
-  color: #6C63FF;
+  font-size: clamp(38px, 5vw, 54px);
+  font-weight: 800;
+  color: var(--accent-2);
   margin-bottom: 8px;
 }
 
 /* Label */
 .stat-label {
   font-size: 18px;
-  opacity: 0.8;
+  color: var(--muted);
 }
 
 /* Responsive */

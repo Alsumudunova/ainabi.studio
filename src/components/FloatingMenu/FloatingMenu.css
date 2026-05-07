@@ -10,7 +10,7 @@
   width: 60px;
   height: 60px;
   border-radius: 50%;
-  background: linear-gradient(135deg, #6a11cb, #2575fc);
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
   color: white;
   font-size: 26px;
   border: none;
@@ -20,7 +20,7 @@
 }
 
 .fab-main:hover {
-  transform: scale(1.05);
+  transform: translateY(-3px);
 }
 
 /* ITEMS */

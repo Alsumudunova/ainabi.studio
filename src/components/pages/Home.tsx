@@ -8,7 +8,7 @@ import Navbar from "../Navbar/Navbar";
 import Services from "../Services/Services";
 import Stats from "../Stats/Stats";
 import Testimonials from "../Testimonials/Testimonials";
-// @ts-ignore
+// @ts-expect-error Team is a JSX component in the current project.
 import Team from "../Team/Team";
 
 

@@ -28,7 +28,7 @@ const BackToTop = () => {
   if (!visible) return null;
 
   return (
-    <button className="back-to-top" onClick={scrollToTop}>
+    <button className="back-to-top" onClick={scrollToTop} aria-label="Жогору кайтуу">
       ↑
     </button>
   );

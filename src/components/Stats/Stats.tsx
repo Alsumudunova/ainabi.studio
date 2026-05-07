@@ -7,10 +7,10 @@ interface StatItem {
 }
 
 const stats: StatItem[] = [
-  { label: "Студенттер", value: 10 },
+  { label: "Студенттер", value: 30 },
   { label: "Курс багыттары", value: 4 },
-  { label: "Инструкторлор", value: 3 },
-  { label: "Практика", value: 100 },
+  { label: "Менторлор", value: 6 },
+  { label: "Практика", value: 70 },
 ];
 
 const Stats = () => {

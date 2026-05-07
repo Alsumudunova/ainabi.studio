@@ -1,27 +1,27 @@
 .intern-section {
   width: 100%;
-  padding: 120px 0;
-  background: linear-gradient(135deg, #0d0e17, #141620);
+  padding: 110px 0;
+  background: linear-gradient(135deg, #0b0e18, #141827);
   color: white;
   display: flex;
   justify-content: center;
 }
 
 .intern-container {
-  width: 90%;
-  max-width: 1300px;
+  width: var(--container);
   text-align: center;
 }
 
 .intern-title {
-  font-size: 42px;
-  font-weight: 700;
-  margin-bottom: 10px;
+  font-size: clamp(34px, 4vw, 52px);
+  font-weight: 800;
+  margin: 0 0 12px;
 }
 
 .intern-subtitle {
   font-size: 18px;
-  opacity: 0.85;
+  color: var(--muted);
+  line-height: 1.7;
   max-width: 680px;
   margin: 0 auto 50px auto;
 }
@@ -30,23 +30,23 @@
 .intern-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 25px;
+  gap: 18px;
 }
 
 /* CARD */
 .intern-card {
-  background: rgba(255, 255, 255, 0.04);
-  border-radius: 18px;
-  padding: 28px;
-  backdrop-filter: blur(15px);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-
+  min-height: 226px;
+  background: var(--panel);
+  border-radius: 12px;
+  padding: 26px;
+  backdrop-filter: blur(18px);
+  border: 1px solid var(--line);
   transition: 0.35s ease;
-  cursor: pointer;
   position: relative;
   overflow: hidden;
   animation: fadeUp 0.8s ease forwards;
   opacity: 0;
+  text-align: left;
 }
 
 /* Gradient Border */
@@ -55,8 +55,8 @@
   position: absolute;
   inset: 0;
   padding: 2px;
-  border-radius: 18px;
-  background: linear-gradient(135deg, #6C63FF, #00C2FF);
+  border-radius: 12px;
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
   -webkit-mask:
     linear-gradient(#fff 0 0) content-box,
     linear-gradient(#fff 0 0);
@@ -75,22 +75,23 @@
 }
 
 .intern-card:hover {
-  transform: translateY(-10px) scale(1.03);
-  box-shadow: 0 0 30px rgba(108, 99, 255, 0.45);
-  border-color: rgba(108, 99, 255, 0.6);
+  transform: translateY(-10px);
+  box-shadow: 0 24px 54px rgba(0, 0, 0, 0.28);
+  border-color: rgba(32, 214, 199, 0.46);
 }
 
 /* TEXT */
 .intern-card h3 {
   font-size: 22px;
   margin-bottom: 12px;
-  color: #6C63FF;
+  color: var(--text);
 }
 
 .intern-card p {
   font-size: 16px;
-  opacity: 0.85;
+  color: var(--muted);
   line-height: 1.6;
+  margin: 0;
 }
 
 /* ANIMATION */
@@ -107,6 +108,10 @@
 }
 
 @media (max-width: 650px) {
+  .intern-section {
+    padding: 82px 0;
+  }
+
   .intern-grid {
     grid-template-columns: 1fr;
   }

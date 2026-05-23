@@ -9,7 +9,7 @@ const WebCourse = () => {
       <Navbar />
       <div className="course-inner">
         <div className="course-back">
-          <Link to="/">Башкы бет</Link> · Web курс
+          <Link to="/#courses">Курстар</Link> · Web курс
         </div>
 
         <div className="course-header">

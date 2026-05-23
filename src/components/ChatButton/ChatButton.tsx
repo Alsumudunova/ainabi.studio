@@ -1,6 +1,6 @@
 import "./ChatButton.css";
 
-const TELEGRAM_BOT_LINK = "https://t.me/aibek_dev";
+const TELEGRAM_BOT_LINK = "https://t.me/ainabistudio";
 
 const ChatButton = () => {
   return (

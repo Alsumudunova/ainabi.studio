@@ -60,7 +60,7 @@ const Contact = () => {
             <p>Форма аркылуу заявка калтырыңыз же түз WhatsApp/Telegram аркылуу жазыңыз.</p>
             <a href="tel:+996702952200">+996 702 952 200</a>
             <a href="https://wa.me/996702952200" target="_blank" rel="noopener noreferrer">WhatsApp аркылуу жазуу</a>
-            <a href="https://t.me/aibek_dev" target="_blank" rel="noopener noreferrer">Telegram аркылуу жазуу</a>
+            <a href="https://t.me/ainabistudio" target="_blank" rel="noopener noreferrer">Telegram аркылуу жазуу</a>
           </div>
 
           <form className="contact-form" onSubmit={handleSubmit}>

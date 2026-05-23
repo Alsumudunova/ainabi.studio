@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import logo from "../../assets/images/logo.jpeg";
 import "./Navbar.css";
 
 const Navbar = () => {
@@ -49,7 +50,10 @@ const Navbar = () => {
     <nav className={scroll ? "navbar navbar-scroll" : "navbar"}>
       <div className="nav-container">
         <a href="#home" className="nav-logo" onClick={() => handleLinkClick("home")}>
-          Ainabi<span>Studio</span>
+          <img src={logo} alt="Ainabi Studio" />
+          <span className="nav-logo-text">
+            Ainabi<span>Studio</span>
+          </span>
         </a>
 
         {/* Desktop menu */}

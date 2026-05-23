@@ -50,7 +50,7 @@ const Courses = () => {
               <h3>{course.title}</h3>
               <p>{course.text}</p>
               <Link to={course.link} className="course-link">
-                Толук маалымат →
+                Толук маалымат
               </Link>
             </article>
           ))}

@@ -9,7 +9,7 @@ const FlutterCourse = () => {
       <Navbar />
       <div className="course-inner">
         <div className="course-back">
-          <Link to="/">Башкы бет</Link> · Flutter курсу
+          <Link to="/#courses">Курстар</Link> · Flutter курсу
         </div>
 
         <div className="course-header">

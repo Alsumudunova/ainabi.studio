@@ -9,7 +9,7 @@ const ChinaCourse = () => {
       <Navbar />
       <div className="course-inner">
         <div className="course-back">
-          <Link to="/">Башкы бет</Link> · Кытай сайттары курсу
+          <Link to="/#courses">Курстар</Link> · Кытай сайттары курсу
         </div>
 
         <div className="course-header">

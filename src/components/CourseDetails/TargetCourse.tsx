@@ -9,7 +9,7 @@ const TargetCourse = () => {
       <Navbar />
       <div className="course-inner">
         <div className="course-back">
-          <Link to="/">Башкы бет</Link> · Таргет курс
+          <Link to="/#courses">Курстар</Link> · Таргет курс
         </div>
 
         <div className="course-header">

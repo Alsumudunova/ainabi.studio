@@ -1,0 +1,25 @@
+{
+  "name": "Ainabi Studio",
+  "short_name": "Ainabi",
+  "description": "IT курстар, веб жана мобилдик иштеп чыгуу, стажировка жана санарип кызматтар.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#090b14",
+  "theme_color": "#20d6c7",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

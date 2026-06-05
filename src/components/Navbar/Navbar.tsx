@@ -1,11 +1,14 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import logo from "../../assets/images/logo.jpeg";
+import { getAuthUser } from "../LMS/authState";
 import "./Navbar.css";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scroll, setScroll] = useState(false);
   const [activeSection, setActiveSection] = useState<string>("home");
+  const [user, setUser] = useState(() => getAuthUser());
 
   useEffect(() => {
     const handleScroll = () => {
@@ -39,6 +42,17 @@ const Navbar = () => {
     handleScroll(); // биринчи жолу чакырабыз
 
     return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  useEffect(() => {
+    const syncUser = () => setUser(getAuthUser());
+
+    window.addEventListener("storage", syncUser);
+    window.addEventListener("ainabi-auth-change", syncUser);
+    return () => {
+      window.removeEventListener("storage", syncUser);
+      window.removeEventListener("ainabi-auth-change", syncUser);
+    };
   }, []);
 
   const handleLinkClick = (id: string) => {
@@ -91,6 +105,9 @@ const Navbar = () => {
             </a>
           </li>
           <li>
+            <Link to="/internship">Стажировка</Link>
+          </li>
+          <li>
             <a
               href="#contact"
               className={activeSection === "contact" ? "active" : ""}
@@ -100,9 +117,27 @@ const Navbar = () => {
           </li>
         </ul>
 
-        <a href="#contact" className="nav-btn">
-          Катталуу
-        </a>
+        <div className="nav-actions">
+          {user ? (
+            <>
+              <Link to="/dashboard" className="nav-profile" aria-label="Кабинет">
+                <span>{user.avatar}</span>
+              </Link>
+              <Link to="/dashboard" className="nav-btn">
+                Кабинет
+              </Link>
+            </>
+          ) : (
+            <>
+              <Link to="/auth/login" className="nav-login">
+                Кирүү
+              </Link>
+              <Link to="/auth/register" className="nav-btn">
+                Катталуу
+              </Link>
+            </>
+          )}
+        </div>
 
         {/* Mobile icon */}
         <button
@@ -147,6 +182,9 @@ const Navbar = () => {
         >
           Курстар
         </a>
+        <Link to="/internship" onClick={() => setIsOpen(false)}>
+          Стажировка
+        </Link>
         <a
           href="#contact"
           onClick={() => handleLinkClick("contact")}
@@ -154,13 +192,20 @@ const Navbar = () => {
         >
           Контакт
         </a>
-        <a
-          href="#contact"
-          onClick={() => handleLinkClick("contact")}
-          className="mobile-btn"
-        >
-          Катталуу
-        </a>
+        {user ? (
+          <Link to="/dashboard" onClick={() => setIsOpen(false)} className="mobile-btn">
+            Кабинет
+          </Link>
+        ) : (
+          <>
+            <Link to="/auth/login" onClick={() => setIsOpen(false)}>
+              Кирүү
+            </Link>
+            <Link to="/auth/register" onClick={() => setIsOpen(false)} className="mobile-btn">
+              Катталуу
+            </Link>
+          </>
+        )}
       </div>
     </nav>
   );
